@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "sqlite-clean"
+version = "0.0.1"
+description = "A SQLite data validation and cleanup tool."
+authors = ["d33bs <dave.bunten@cuanschutz.edu>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+SQLAlchemy = "^1.4.37"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+black = "^22.3.0"
+pylint = "^2.14.3"
+bandit = "^1.7.4"
+mypy = "^0.961"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
