@@ -13,10 +13,17 @@ SQLAlchemy = "^1.4.37"
 pytest = "^7.1.2"
 black = "^22.3.0"
 pylint = "^2.14.3"
-bandit = "^1.7.4"
+bandit = {extras = ["toml"], version = "^1.7.4"}
 mypy = "^0.961"
 isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.bandit]
+skips = ["B608"]

@@ -3,12 +3,13 @@
 import pytest
 from sqlalchemy.engine.base import Engine
 from sqlalchemy.exc import IntegrityError
+
+from sqlite_clean.constants import LIKE_NULLS
 from sqlite_clean.fix import (
     clean_like_nulls,
     update_columns_to_nullable,
     update_values_like_null_to_null,
 )
-from sqlite_clean.constants import LIKE_NULLS
 
 
 def test_update_columns_to_nullable(database_engine_for_testing):

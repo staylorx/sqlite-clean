@@ -1,12 +1,9 @@
 """ Tests for sqlite_clean.utils """
 
-import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.engine.base import Engine
-from sqlite_clean.utils import (
-    collect_columns,
-    engine_from_str,
-)
+
+from sqlite_clean.utils import collect_columns, engine_from_str
 
 
 def test_engine_from_str():

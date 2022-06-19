@@ -1,7 +1,5 @@
 """ Tests for sqlite_clean.lint """
 
-from sqlalchemy import create_engine
-from sqlalchemy.engine.base import Engine
 from sqlite_clean.lint import (
     contains_conflicting_aff_storage_class,
     contains_str_like_null,

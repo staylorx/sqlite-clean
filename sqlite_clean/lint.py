@@ -103,7 +103,7 @@ def contains_str_like_null(
     sql_engine: Union[str, Engine],
     table_name: Optional[str] = None,
     column_name: Optional[str] = None,
-    like_nulls: Tuple[str] = LIKE_NULLS,
+    like_nulls: Tuple[str, ...] = LIKE_NULLS,
 ) -> bool:
     """
     Detect whether the given database, table, or column contains
