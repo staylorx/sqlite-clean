@@ -2,7 +2,7 @@
 
 A SQLite data validation and cleanup tool.
 
-SQLite is an incredibly flexible tool that has great utility in many circumstances. This flexibility sometimes comes at the cost of later data performance or surprise challenges which can otherwise be avoided or fixed with checks. `sqlite-clean` is intended to be used for these checks and enable cleanup steps where possible.
+SQLite is an incredibly flexible tool that has great utility in many circumstances. This flexibility sometimes comes at the cost of later data performance or surprise challenges which can sometimes otherwise be avoided or fixed with checks. `sqlite-clean` is intended to be used for these checks and enable cleanup steps where possible.
 
 Database changes from this tool are intended to be the choice and responsibility of the user. To this effect, `sqlite-clean` provides both "linting" (detection and alerts of possible issues) and "fixes" (actual changes to the database) as separate utilities within the same tool. By default, "linting" actions are taken unless otherwise specifying flags associated with "fixes".
 
