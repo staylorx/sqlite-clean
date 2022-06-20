@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "sqlite-clean"
-version = "0.0.1"
+version = "0.0.2"
 description = "A SQLite data validation and cleanup tool."
 authors = ["d33bs <dave.bunten@cuanschutz.edu>"]
 license = "Apache-2.0"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7.2"
 SQLAlchemy = "^1.4.37"
 
 [tool.poetry.dev-dependencies]

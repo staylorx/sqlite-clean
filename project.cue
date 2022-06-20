@@ -63,7 +63,7 @@ import (
 			},
 		]
 	}
-	// python build for actions in this plan
+	// python build with likely changes
 	_python_build: docker.#Build & {
 		steps: [
 			docker.#Copy & {
@@ -183,7 +183,7 @@ dagger.#Plan & {
 			}
 		}
 
-		// lint
+		// linting to check for formatting and best practices
 		lint: {
 
 			// python versions to reference for builds

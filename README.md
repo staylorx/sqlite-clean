@@ -10,13 +10,19 @@ Database changes from this tool are intended to be the choice and responsibility
 
 - Checking that database column affinity type matches data type.
 - Checking for null-like strings in nullable columns ("null" vs NULL)
-- And more!
+- ... and more!
 
 ## Installation
 
-Please use Python [`poetry`](https://python-poetry.org/) to run and install this tool locally.
+Use pip to install this package along with optional version tags as desired.
+
+```shell
+pip install sqlite-clean
+```
 
 ## Development
+
+Installation: Please use Python [`poetry`](https://python-poetry.org/) to run and install this tool for development.
 
 Development is assisted by procedures using [Dagger](https://dagger.io) via the `project.cue` file within this repo. These are also related to checks which are performed related to CI/CD. See the following page for more information on installing Dagger: <https://docs.dagger.io/install>
 
