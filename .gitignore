@@ -132,3 +132,10 @@ dmypy.json
 cue.mod/pkg
 cue.mod/usr
 cue.mod/dagger*
+.next
+node_modules
+.dendron.*
+build
+seeds
+.next
+pods/service-connections
