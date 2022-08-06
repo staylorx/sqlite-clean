@@ -16,6 +16,8 @@ pylint = "^2.14.3"
 bandit = {extras = ["toml"], version = "^1.7.4"}
 mypy = "^0.961"
 isort = "^5.10.1"
+Sphinx = "^5.1.1"
+sphinxcontrib-napoleon = "^0.7"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
