@@ -12,11 +12,15 @@ from sqlite_clean.utils import collect_columns, engine_from_str
 
 logger = logging.getLogger(__name__)
 
+# pylint: disable=unused-argument
+
 
 def contains_conflicting_aff_storage_class(
+    *args,
     sql_engine: Union[str, Engine],
     table_name: Optional[str] = None,
     column_name: Optional[str] = None,
+    **kwargs,
 ) -> bool:
     """
     Detect conflicting column affinity vs data storage class for

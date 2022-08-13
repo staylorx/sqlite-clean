@@ -15,18 +15,23 @@ def test_contains_conflicting_aff_storage_class(database_engine_for_testing):
     assert contains_conflicting_aff_storage_class(sql_engine=":memory:") is False
 
     # test non-conflicting database
-    assert contains_conflicting_aff_storage_class(database_engine_for_testing) is False
+    assert (
+        contains_conflicting_aff_storage_class(sql_engine=database_engine_for_testing)
+        is False
+    )
     # test non-conlicting database single table
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_a"
+            sql_engine=database_engine_for_testing, table_name="tbl_a"
         )
         is False
     )
     # test non-conlicting database single table and single column
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_a", column_name="col_integer"
+            sql_engine=database_engine_for_testing,
+            table_name="tbl_a",
+            column_name="col_integer",
         )
         is False
     )
@@ -41,32 +46,39 @@ def test_contains_conflicting_aff_storage_class(database_engine_for_testing):
         )
 
     # test conflicting database
-    assert contains_conflicting_aff_storage_class(database_engine_for_testing) is True
+    assert (
+        contains_conflicting_aff_storage_class(sql_engine=database_engine_for_testing)
+        is True
+    )
     # test conflicting database single table, conflicting table
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_a"
+            sql_engine=database_engine_for_testing, table_name="tbl_a"
         )
         is True
     )
     # test conflicting database single table, non-conflicting table
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_b"
+            sql_engine=database_engine_for_testing, table_name="tbl_b"
         )
         is False
     )
     # test conflicting database single table and single conflicting column
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_a", column_name="col_integer"
+            sql_engine=database_engine_for_testing,
+            table_name="tbl_a",
+            column_name="col_integer",
         )
         is True
     )
     # test conflicting database single table and single non-conflicting column
     assert (
         contains_conflicting_aff_storage_class(
-            database_engine_for_testing, table_name="tbl_a", column_name="col_text"
+            sql_engine=database_engine_for_testing,
+            table_name="tbl_a",
+            column_name="col_text",
         )
         is False
     )
