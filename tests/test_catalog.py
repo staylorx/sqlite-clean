@@ -1,11 +1,11 @@
-""" Tests for sqlite_clean.index """
+""" Tests for sqlite_clean.catalog """
 
 import jsonschema
 
-from sqlite_clean.index import SQLITE_CLEAN_INDEX
+from sqlite_clean.catalog import SQLITE_CLEAN_CATALOG
 
-# jsonschema for SQLITE_CLEAN_INDEX
-SQLITE_CLEAN_INDEX_SCHEMA = {
+# jsonschema for SQLITE_CLEAN_CATALOG
+SQLITE_CLEAN_CATALOG_SCHEMA = {
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
     "properties": {
@@ -38,18 +38,18 @@ SQLITE_CLEAN_INDEX_SCHEMA = {
 }
 
 
-def test_sqlite_clean_index():
+def test_sqlite_clean_catalog():
     """
-    Testing SQLITE_CLEAN_INDEX
+    Testing SQLITE_CLEAN_catalog
     """
 
     # test for unique id's
-    ids = [x["id"] for x in SQLITE_CLEAN_INDEX["lint"] + SQLITE_CLEAN_INDEX["fix"]]
+    ids = [x["id"] for x in SQLITE_CLEAN_CATALOG["lint"] + SQLITE_CLEAN_CATALOG["fix"]]
     assert len(ids) == len(set(ids))
 
-    # build a modified version of index for jsonschema validation
+    # build a modified version of catalog for jsonschema validation
     # note: we do this because functions are not json compatible values
-    sqlite_clean_index_for_schema = {
+    sqlite_clean_catalog_for_schema = {
         key: [
             {
                 x_key: x_val.__name__ if x_key == "ref" else x_val
@@ -57,12 +57,14 @@ def test_sqlite_clean_index():
             }
             for x in val
         ]
-        for key, val in SQLITE_CLEAN_INDEX.items()
+        for key, val in SQLITE_CLEAN_CATALOG.items()
     }
 
     # validate against jsonschema
     # note: jsonschema.validate returns nonetype if no errors detected
     assert isinstance(
-        jsonschema.validate(sqlite_clean_index_for_schema, SQLITE_CLEAN_INDEX_SCHEMA),
+        jsonschema.validate(
+            sqlite_clean_catalog_for_schema, SQLITE_CLEAN_CATALOG_SCHEMA
+        ),
         type(None),
     )

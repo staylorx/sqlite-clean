@@ -1,11 +1,11 @@
 """
-sqlite-clean index - intended to be used for indexing various linting and
+sqlite-clean catalog - intended to be used for cataloging various linting and
 fixing operations found within this repo.
 """
 from .fix import clean_like_nulls
 from .lint import contains_conflicting_aff_storage_class, contains_str_like_null
 
-SQLITE_CLEAN_INDEX = {
+SQLITE_CLEAN_CATALOG = {
     "lint": [
         {
             "id": "L0001",
