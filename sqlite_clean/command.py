@@ -2,7 +2,7 @@
 sqlite-clean command - provides command-line functionality wrappers
 """
 
-from typing import Optional, Tuple
+from typing import Optional
 
 import click
 
@@ -24,20 +24,35 @@ from sqlite_clean.constants import LIKE_NULLS
 )
 @click.option(
     "--like_nulls",
-    default=None,
+    # pass LIKE_NULLS tuple as joined string
+    # see below notes for like_nulls_tuple
+    default=",".join(LIKE_NULLS),
     help="Optional list of null-like values to pass in for linting actions.",
 )
 def lint(
     sql_engine: str,
-    table_name: Optional[str] = None,
-    column_name: Optional[str] = None,
-    like_nulls: Tuple[str, ...] = LIKE_NULLS,
+    table_name: Optional[str],
+    column_name: Optional[str],
+    like_nulls: str,
 ):
     """
     Runs sqlite-clean linting functionality through command-line
     """
+
+    # click doesn't allow for variable length tuple options
+    # as a result we input a string for like_nulls and
+    # recompose into tuple here for compatibility with linting ops
+    like_nulls_tuple = tuple(like_nulls.split(","))
+
     for func in [item["ref"] for item in SQLITE_CLEAN_CATALOG["lint"]]:
-        func(sql_engine, table_name, column_name, like_nulls)  # type: ignore
+        func(  # type: ignore
+            sql_engine=sql_engine,
+            table_name=table_name,
+            column_name=column_name,
+            like_nulls=like_nulls_tuple,
+        )
+
+    click.echo("Database linted, no issues detected!")
 
 
 @click.command()
@@ -74,3 +89,8 @@ def fix(
     """
     for func in [item["ref"] for item in SQLITE_CLEAN_CATALOG["fix"]]:
         func(sql_engine, dest_path, table_name, column_name, inplace)  # type: ignore
+
+    if not dest_path:
+        dest_path = sql_engine
+
+    click.echo(f"Database fixed at {dest_path}!")
