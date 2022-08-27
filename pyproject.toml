@@ -6,6 +6,7 @@ authors = ["d33bs <dave.bunten@cuanschutz.edu>"]
 license = "Apache-2.0"
 
 [tool.poetry.scripts]
+base = "sqlite_clean.command:cli"
 lint = "sqlite_clean.command:lint"
 fix = "sqlite_clean.command:fix"
 

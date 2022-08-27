@@ -10,7 +10,14 @@ from sqlite_clean.catalog import SQLITE_CLEAN_CATALOG
 from sqlite_clean.constants import LIKE_NULLS
 
 
-@click.command()
+@click.group()
+def cli():
+    """
+    Utility for linting and fixing SQLite database files.
+    """
+
+
+@cli.command()
 @click.option("--sql_engine", help="Filepath for SQLite database file.")
 @click.option(
     "--table_name",
@@ -55,7 +62,7 @@ def lint(
     click.echo("Database linted, no issues detected!")
 
 
-@click.command()
+@cli.command()
 @click.option("--sql_engine", help="Filepath for SQLite database file.")
 @click.option(
     "--dest_path",
