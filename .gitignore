@@ -132,3 +132,6 @@ dmypy.json
 cue.mod/pkg
 cue.mod/usr
 cue.mod/dagger*
+
+# raw data
+*.sqlite
